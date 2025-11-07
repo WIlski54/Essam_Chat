@@ -15,7 +15,7 @@
         }
 
         body {
-            background-image: url('hintergrund.png');
+            background-image: url('/static/hintergrund.png'); /* KORRIGIERT */
             background-size: cover;
             background-position: center;
             background-repeat: no-repeat;
@@ -95,18 +95,14 @@
 </head>
 <body>
 
-    <img src="essam1.png" alt="Essam, ein Vorarbeiter im alten Ägypten" class="character-sprite" id="essam-sprite">
-
-    <div class="speech-bubble" id="speech-bubble">
+    <img src="/static/essam1.png" alt="Essam, ein Vorarbeiter im alten Ägypten" class="character-sprite" id="essam-sprite"> <div class="speech-bubble" id="speech-bubble">
         </div>
 
     <div class="chat-input-container">
         <input type="text" id="chat-input" placeholder="Stelle hier deine Frage an Essam...">
     </div>
 
-    <audio src="soundscape.mp3" autoplay loop class="hidden-audio"></audio>
-
-    <script>
+    <audio src="/static/soundscape.mp3" autoplay loop class="hidden-audio"></audio> <script>
         const speechBubble = document.getElementById('speech-bubble');
         const chatInput = document.getElementById('chat-input');
         const essamSprite = document.getElementById('essam-sprite'); // Sprite wird nicht mehr gebraucht, aber schadet nicht
@@ -149,7 +145,7 @@
                 }
                 
                 try {
-                  const response = await fetch('/chat_essam', {
+                    const response = await fetch('/chat_essam', { // Dieser Pfad war schon korrekt
                         method: 'POST',
                         headers: { 'Content-Type': 'application/json' },
                         body: JSON.stringify({ message: userFrage }),
